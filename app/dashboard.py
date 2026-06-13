@@ -51,12 +51,74 @@ def apply_design_system() -> None:
         }
 
         [data-testid="stSidebar"] {
-            background: #06111f;
+            background:
+                linear-gradient(180deg, rgba(8, 47, 73, .94), rgba(2, 6, 23, .98));
             border-right: 1px solid rgba(34, 211, 238, .16);
+            box-shadow: 12px 0 42px rgba(0, 0, 0, .24);
         }
 
         [data-testid="stSidebar"] * {
             color: #dbeafe;
+        }
+
+        [data-testid="stSidebar"] [role="radiogroup"] {
+            gap: 10px;
+        }
+
+        [data-testid="stSidebar"] label {
+            border: 1px solid rgba(34, 211, 238, .10);
+            border-radius: 14px;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            background: rgba(15, 23, 42, .36);
+            transition: transform .18s ease, border-color .18s ease, background .18s ease;
+        }
+
+        [data-testid="stSidebar"] label:hover {
+            transform: translateX(3px);
+            border-color: rgba(34, 211, 238, .38);
+            background: rgba(14, 116, 144, .24);
+        }
+
+        [data-testid="stSidebar"] label:has(input:checked) {
+            background: linear-gradient(135deg, rgba(8, 145, 178, .36), rgba(15, 23, 42, .74));
+            border-color: rgba(103, 232, 249, .72);
+            box-shadow: 0 12px 32px rgba(8, 145, 178, .16);
+        }
+
+        .sidebar-brand {
+            background: rgba(15, 23, 42, .58);
+            border: 1px solid rgba(34, 211, 238, .24);
+            border-radius: 18px;
+            padding: 18px;
+            margin: 4px 0 22px 0;
+            box-shadow: 0 16px 38px rgba(0, 0, 0, .22);
+        }
+
+        .sidebar-logo {
+            align-items: center;
+            display: flex;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+
+        .sidebar-logo-icon {
+            align-items: center;
+            background: rgba(34, 211, 238, .14);
+            border: 1px solid rgba(103, 232, 249, .38);
+            border-radius: 14px;
+            display: inline-flex;
+            height: 38px;
+            justify-content: center;
+            width: 38px;
+        }
+
+        .sidebar-tagline {
+            color: #a5f3fc;
+            font-size: .82rem;
+            line-height: 1.35;
+            margin-top: 10px;
         }
 
         .block-container {
@@ -75,18 +137,59 @@ def apply_design_system() -> None:
         }
 
         .hero {
-            background: linear-gradient(135deg, rgba(8, 47, 73, .96), rgba(15, 23, 42, .92));
-            border: 1px solid rgba(34, 211, 238, .25);
-            border-radius: 24px;
-            padding: 34px;
+            backdrop-filter: blur(20px);
+            background:
+                linear-gradient(135deg, rgba(8, 47, 73, .76), rgba(15, 23, 42, .72)),
+                radial-gradient(circle at 88% 18%, rgba(34, 211, 238, .18), transparent 28%);
+            border: 1px solid rgba(125, 211, 252, .26);
+            border-radius: 26px;
+            padding: 36px;
             margin-bottom: 24px;
-            box-shadow: 0 24px 70px rgba(0, 0, 0, .34);
+            box-shadow: 0 26px 80px rgba(0, 0, 0, .34);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero::after {
+            background: linear-gradient(90deg, transparent, rgba(34, 211, 238, .26), transparent);
+            content: "";
+            height: 1px;
+            left: 30px;
+            position: absolute;
+            right: 30px;
+            top: 0;
+        }
+
+        .hero-title {
+            align-items: center;
+            display: flex;
+            gap: 16px;
+        }
+
+        .brain-pulse {
+            align-items: center;
+            background: rgba(34, 211, 238, .12);
+            border: 1px solid rgba(103, 232, 249, .48);
+            border-radius: 999px;
+            box-shadow: 0 0 0 rgba(34, 211, 238, .32);
+            display: inline-flex;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            height: clamp(64px, 8vw, 86px);
+            justify-content: center;
+            min-width: clamp(64px, 8vw, 86px);
+            animation: pulseGlow 2.4s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(34, 211, 238, .34); }
+            70% { box-shadow: 0 0 0 18px rgba(34, 211, 238, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0); }
         }
 
         .hero h1 {
             font-size: clamp(2.4rem, 5vw, 4.4rem);
             line-height: 1.02;
-            margin: 0 0 10px 0;
+            margin: 0;
             font-weight: 800;
         }
 
@@ -105,10 +208,21 @@ def apply_design_system() -> None:
         }
 
         .section-title {
+            align-items: center;
             color: #f8fafc;
+            display: flex;
+            gap: 10px;
             font-size: 1.35rem;
             font-weight: 800;
             margin: 22px 0 12px 0;
+        }
+
+        .section-title::after {
+            background: linear-gradient(90deg, rgba(34, 211, 238, .45), transparent);
+            content: "";
+            flex: 1;
+            height: 1px;
+            margin-left: 6px;
         }
 
         .card {
@@ -118,6 +232,13 @@ def apply_design_system() -> None:
             padding: 22px;
             min-height: 138px;
             box-shadow: 0 18px 48px rgba(0, 0, 0, .24);
+            transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+        }
+
+        .card:hover, .comparison-card:hover, .workflow-card:hover, .chart-card:hover {
+            border-color: rgba(103, 232, 249, .42);
+            box-shadow: 0 24px 62px rgba(0, 0, 0, .34);
+            transform: translateY(-2px);
         }
 
         .metric-icon {
@@ -155,6 +276,7 @@ def apply_design_system() -> None:
             padding: 18px 14px;
             min-height: 112px;
             text-align: center;
+            transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
         }
 
         .workflow-icon {
@@ -175,6 +297,7 @@ def apply_design_system() -> None:
             font-weight: 800;
             text-align: center;
             padding-top: 32px;
+            text-shadow: 0 0 18px rgba(34, 211, 238, .45);
         }
 
         .comparison-card {
@@ -183,6 +306,7 @@ def apply_design_system() -> None:
             border-radius: 18px;
             padding: 24px;
             min-height: 190px;
+            transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
         }
 
         .comparison-card h3 {
@@ -204,6 +328,46 @@ def apply_design_system() -> None:
             text-align: center;
         }
 
+        .chart-card {
+            background: rgba(15, 23, 42, .72);
+            border: 1px solid rgba(34, 211, 238, .18);
+            border-radius: 18px;
+            padding: 18px;
+            box-shadow: 0 18px 48px rgba(0, 0, 0, .20);
+            transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+        }
+
+        .impact-grid {
+            display: grid;
+            gap: 14px;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .impact-card {
+            background: rgba(8, 47, 73, .58);
+            border: 1px solid rgba(34, 211, 238, .18);
+            border-radius: 16px;
+            padding: 18px;
+        }
+
+        .impact-card h3 {
+            color: #67e8f9;
+            font-size: .92rem;
+            margin: 0 0 8px 0;
+            text-transform: uppercase;
+        }
+
+        .impact-card p, .impact-card li {
+            color: #cbd5e1;
+            font-size: .96rem;
+            margin: 0;
+        }
+
+        .impact-card ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+
         div[data-testid="stMetric"] {
             background: rgba(15, 23, 42, .86);
             border: 1px solid rgba(34, 211, 238, .20);
@@ -213,6 +377,21 @@ def apply_design_system() -> None:
 
         .stDataFrame, .stPlotlyChart, [data-testid="stExpander"] {
             border-radius: 16px;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                padding: 26px;
+            }
+
+            .hero-title {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
         }
         </style>
         """,
@@ -265,13 +444,34 @@ def metric_card(title: str, value: str, icon: str, help_text: str = "") -> str:
     """
 
 
+def section_title(icon: str, title: str) -> None:
+    """Render a consistent section heading with a compact icon."""
+
+    st.markdown(f"<div class='section-title'>{icon} {safe_text(title)}</div>", unsafe_allow_html=True)
+
+
+def chart_card_start() -> None:
+    """Start a lightweight visual card around a chart."""
+
+    st.markdown("<div class='chart-card'>", unsafe_allow_html=True)
+
+
+def chart_card_end() -> None:
+    """Close a lightweight visual card around a chart."""
+
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
 def render_hero() -> None:
     """Render the healthcare product hero section."""
 
     st.markdown(
         """
         <section class="hero">
-            <h1>&#129504; NeuroMove</h1>
+            <div class="hero-title">
+                <span class="brain-pulse">&#129504;</span>
+                <h1>NeuroMove</h1>
+            </div>
             <div class="subtitle">Neuromorphic EMG Motor Intent Detection for Stroke Rehabilitation</div>
             <p class="description">
                 Detecting patient movement intentions using low-power event-driven AI inspired by the human brain.
@@ -323,7 +523,7 @@ def render_metrics(prediction: str, confidence: float, reduction: dict[str, floa
 def render_patient_journey() -> None:
     """Render the end-to-end rehabilitation workflow."""
 
-    st.markdown("<div class='section-title'>Patient Journey</div>", unsafe_allow_html=True)
+    section_title("&#128694;", "Patient Journey")
     steps = [
         ("&#129489;", "Patient Attempts Movement"),
         ("&#128246;", "EMG Sensor Captures Signals"),
@@ -350,7 +550,7 @@ def render_patient_journey() -> None:
 def render_neuromorphic_innovation(reduction: dict[str, float]) -> None:
     """Render the traditional vs neuromorphic processing comparison."""
 
-    st.markdown("<div class='section-title'>Neuromorphic Innovation</div>", unsafe_allow_html=True)
+    section_title("&#9889;", "Neuromorphic Innovation")
     left, right = st.columns(2)
     left.markdown(
         """
@@ -390,7 +590,7 @@ def render_architecture() -> None:
     """Render the system architecture page."""
 
     render_hero()
-    st.markdown("<div class='section-title'>System Architecture</div>", unsafe_allow_html=True)
+    section_title("&#128736;", "System Architecture")
     stages = [
         ("&#128202;", "EMG Signals", "Multi-channel muscle activity captured from the patient."),
         ("&#9889;", "Spike Encoding", "Signal changes above threshold become sparse events."),
@@ -403,7 +603,7 @@ def render_architecture() -> None:
     for index, (icon, title, detail) in enumerate(stages):
         st.markdown(
             f"""
-            <div class="card" style="min-height:auto;margin-bottom:10px;">
+            <div class="card" style="min-height:auto;margin-bottom:12px;">
                 <div class="metric-icon">{icon}</div>
                 <div class="metric-value" style="font-size:1.35rem;">{safe_text(title)}</div>
                 <div class="metric-help">{safe_text(detail)}</div>
@@ -419,29 +619,62 @@ def render_future_scope() -> None:
     """Render the future scope page."""
 
     render_hero()
-    st.markdown("<div class='section-title'>Future Scope</div>", unsafe_allow_html=True)
+    section_title("&#128640;", "Future Scope")
     items = [
-        "Real-time EMG Sensors",
-        "EEG Integration",
-        "Spiking Neural Networks",
-        "Neuromorphic Hardware",
-        "Robotic Hand Control",
-        "Clinical Deployment",
+        ("&#128246;", "Real-time EMG Sensors"),
+        ("&#129504;", "EEG Integration"),
+        ("&#9889;", "Spiking Neural Networks"),
+        ("&#128421;", "Neuromorphic Hardware"),
+        ("&#129470;", "Robotic Hand Control"),
+        ("&#127973;", "Clinical Deployment"),
     ]
 
     for row in range(0, len(items), 3):
         columns = st.columns(3)
-        for column, item in zip(columns, items[row : row + 3]):
+        for column, (icon, item) in zip(columns, items[row : row + 3]):
             column.markdown(
                 f"""
                 <div class="card">
-                    <div class="metric-icon">&#10003;</div>
+                    <div class="metric-icon">{icon}</div>
                     <div class="metric-value" style="font-size:1.25rem;">{safe_text(item)}</div>
                     <div class="metric-help">Next milestone for clinical-grade rehabilitation impact.</div>
                 </div>
                 """,
                 unsafe_allow_html=True,
             )
+
+
+def render_project_impact() -> None:
+    """Render a compact hackathon impact summary near the bottom."""
+
+    section_title("&#127919;", "Project Impact")
+    st.markdown(
+        """
+        <div class="impact-grid">
+            <div class="impact-card">
+                <h3>Problem</h3>
+                <p>Stroke patients may struggle to perform intended movements.</p>
+            </div>
+            <div class="impact-card">
+                <h3>Solution</h3>
+                <p>
+                    NeuroMove detects motor intent from EMG signals and triggers assistive actions
+                    using neuromorphic-inspired event-driven processing.
+                </p>
+            </div>
+            <div class="impact-card">
+                <h3>Benefits</h3>
+                <ul>
+                    <li>Lower compute requirements</li>
+                    <li>Faster response time</li>
+                    <li>Rehabilitation assistance</li>
+                    <li>Scalable future deployment</li>
+                </ul>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 def render_footer() -> None:
@@ -457,6 +690,33 @@ def render_footer() -> None:
         """,
         unsafe_allow_html=True,
     )
+
+
+def render_sidebar() -> str:
+    """Render premium sidebar branding and return the selected page."""
+
+    st.sidebar.markdown(
+        """
+        <div class="sidebar-brand">
+            <div class="sidebar-logo">
+                <span class="sidebar-logo-icon">&#129504;</span>
+                <span>NeuroMove</span>
+            </div>
+            <div class="sidebar-tagline">Neuromorphic Stroke Rehabilitation Assistant</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    page_options = {
+        "Live Demo": "\U0001f4c8 Live Demo",
+        "Architecture": "\U0001f6e0 Architecture",
+        "Dataset": "\U0001f4ca Dataset",
+        "Model Performance": "\U0001f3af Model Performance",
+        "Future Scope": "\U0001f680 Future Scope",
+    }
+    selected_label = st.sidebar.radio("Navigation", list(page_options.values()))
+    return next(page for page, label in page_options.items() if label == selected_label)
 
 
 def plot_signal(values: np.ndarray, title: str, ylabel: str) -> plt.Figure:
@@ -539,20 +799,28 @@ def render_live_demo(df: pd.DataFrame, feature_columns: list[str], bundle: dict)
 
     chart_cols = st.columns(2)
     with chart_cols[0]:
-        st.markdown("<div class='section-title'>Raw EMG Signal</div>", unsafe_allow_html=True)
+        section_title("&#128202;", "Raw EMG Signal")
+        chart_card_start()
         st.pyplot(plot_signal(signal_window[:, 0], "Raw EMG Signal", "Amplitude"), use_container_width=True)
+        chart_card_end()
     with chart_cols[1]:
-        st.markdown("<div class='section-title'>Spike-Encoded Signal</div>", unsafe_allow_html=True)
+        section_title("&#9889;", "Spike-Encoded Signal")
+        chart_card_start()
         st.pyplot(plot_signal(spikes[:, 0], "Spike-Encoded Signal", "Spike"), use_container_width=True)
+        chart_card_end()
 
     confidence_col, distribution_col = st.columns([1, 1.2])
     with confidence_col:
-        st.markdown("<div class='section-title'>Prediction Confidence</div>", unsafe_allow_html=True)
+        section_title("&#129504;", "Prediction Confidence")
+        chart_card_start()
         st.progress(confidence)
         st.caption(f"The model is {confidence * 100:.1f}% confident that the intended movement is {prediction}.")
+        chart_card_end()
     with distribution_col:
-        st.markdown("<div class='section-title'>Confidence by Class</div>", unsafe_allow_html=True)
+        section_title("&#128200;", "Confidence by Class")
+        chart_card_start()
         st.bar_chart(pd.Series(confidence_by_label).reindex(LABELS).fillna(0.0))
+        chart_card_end()
 
     render_neuromorphic_innovation(reduction)
 
@@ -561,7 +829,7 @@ def render_model_performance(metrics: dict) -> None:
     """Render the redesigned model performance page."""
 
     render_hero()
-    st.markdown("<div class='section-title'>Model Performance</div>", unsafe_allow_html=True)
+    section_title("&#127919;", "Model Performance")
 
     summary_cols = st.columns(3)
     summary_cols[0].markdown(
@@ -590,8 +858,12 @@ def render_model_performance(metrics: dict) -> None:
     matrix = np.array(metrics["confusion_matrix"])
     left, right = st.columns([1, 1])
     with left:
+        section_title("&#128290;", "Confusion Matrix")
+        chart_card_start()
         st.pyplot(plot_confusion_matrix(matrix), use_container_width=True)
+        chart_card_end()
     with right:
+        section_title("&#128161;", "Why It Matters")
         st.markdown(
             """
             <div class="comparison-card">
@@ -610,7 +882,7 @@ def render_dataset_page(df: pd.DataFrame, label_column: str, feature_columns: li
     """Render a polished dataset summary page."""
 
     render_hero()
-    st.markdown("<div class='section-title'>Dataset Summary</div>", unsafe_allow_html=True)
+    section_title("&#128202;", "Dataset Summary")
 
     class_counts = df[label_column].value_counts().reindex(LABELS).fillna(0).astype(int)
     summary_cols = st.columns(4)
@@ -621,9 +893,13 @@ def render_dataset_page(df: pd.DataFrame, label_column: str, feature_columns: li
 
     chart_cols = st.columns([1.2, 1])
     with chart_cols[0]:
-        st.markdown("<div class='section-title'>Class Distribution</div>", unsafe_allow_html=True)
+        section_title("&#128200;", "Class Distribution")
+        chart_card_start()
         st.bar_chart(class_counts)
+        chart_card_end()
     with chart_cols[1]:
+        section_title("&#9899;", "Class Balance")
+        chart_card_start()
         fig, ax = plt.subplots(figsize=(4.8, 4), facecolor="#0f172a")
         ax.set_facecolor("#0f172a")
         ax.pie(
@@ -635,6 +911,7 @@ def render_dataset_page(df: pd.DataFrame, label_column: str, feature_columns: li
         )
         ax.set_title("Class Balance", color="#f8fafc", fontweight="bold")
         st.pyplot(fig, use_container_width=True)
+        chart_card_end()
 
     with st.expander("View raw dataset"):
         st.dataframe(df.head(100), use_container_width=True, hide_index=True)
@@ -649,11 +926,7 @@ def main() -> None:
     bundle = cached_model()
     metrics = load_metrics()
 
-    st.sidebar.markdown("## NeuroMove")
-    page = st.sidebar.radio(
-        "Navigation",
-        ["Live Demo", "Architecture", "Dataset", "Model Performance", "Future Scope"],
-    )
+    page = render_sidebar()
 
     if page == "Live Demo":
         render_live_demo(df, feature_columns, bundle)
@@ -666,6 +939,7 @@ def main() -> None:
     else:
         render_future_scope()
 
+    render_project_impact()
     render_footer()
 
 
