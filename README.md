@@ -107,9 +107,9 @@ This means the system focuses on meaningful signal changes rather than every raw
 
 ### Traditional AI vs Neuromorphic AI
 
-| Approach | Processing Style | Impact |
-|---|---|---|
-| Traditional AI | Processes every signal sample | Higher compute load |
+| Approach                 | Processing Style                 | Impact                                      |
+| ------------------------ | -------------------------------- | ------------------------------------------- |
+| Traditional AI           | Processes every signal sample    | Higher compute load                         |
 | Neuromorphic-inspired AI | Processes important spike events | Lower compute and faster response potential |
 
 ---
@@ -146,14 +146,14 @@ Assistive Device Action
 
 ## 🛠 Technology Stack
 
-| Category | Tools |
-|---|---|
-| Programming Language | Python |
-| Dashboard | Streamlit |
-| Machine Learning | Scikit-learn |
-| Data Processing | Pandas, NumPy |
-| Visualization | Matplotlib, Streamlit Charts |
-| Model Storage | Joblib |
+| Category             | Tools                        |
+| -------------------- | ---------------------------- |
+| Programming Language | Python                       |
+| Dashboard            | Streamlit                    |
+| Machine Learning     | Scikit-learn                 |
+| Data Processing      | Pandas, NumPy                |
+| Visualization        | Matplotlib, Streamlit Charts |
+| Model Storage        | Joblib                       |
 
 ---
 
@@ -197,40 +197,18 @@ For hackathon reliability, if no dataset is found at `data/emg_gesture_data.csv`
 
 ---
 
-## 🖼 Screenshots
-
-> Add screenshots from the `screenshots/` folder after running the app.
-
-### Dashboard
-
-![Dashboard Screenshot](screenshots/dashboard.png)
-
-### Motor Intent Prediction
-
-![Prediction Screenshot](screenshots/prediction.png)
-
-### Model Performance
-
-![Performance Screenshot](screenshots/performance.png)
-
-### Architecture Page
-
-![Architecture Screenshot](screenshots/architecture.png)
-
----
-
 ## 📈 Model Performance
 
 The current prototype uses a Random Forest classifier trained on EMG features.
 
 Example performance from the demo run:
 
-| Metric | Value |
-|---|---:|
-| Accuracy | 99.29% |
-| Classes | Open Hand, Close Hand, Rest |
-| Model | Random Forest Classifier |
-| Feature Type | Numeric EMG channels |
+| Metric       |                       Value |
+| ------------ | --------------------------: |
+| Accuracy     |                      99.29% |
+| Classes      | Open Hand, Close Hand, Rest |
+| Model        |    Random Forest Classifier |
+| Feature Type |        Numeric EMG channels |
 
 The dashboard includes:
 
@@ -253,11 +231,11 @@ NeuroMove demonstrates:
 
 Example compute comparison:
 
-| Metric | Description |
-|---|---|
-| Raw Samples | Total continuous EMG values processed traditionally |
-| Spike Events | Signal changes that crossed the spike threshold |
-| Reduction % | Estimated event-driven compute reduction |
+| Metric       | Description                                         |
+| ------------ | --------------------------------------------------- |
+| Raw Samples  | Total continuous EMG values processed traditionally |
+| Spike Events | Signal changes that crossed the spike threshold     |
+| Reduction %  | Estimated event-driven compute reduction            |
 
 ---
 
@@ -356,28 +334,6 @@ NeuroMove/
 ├── requirements.txt
 └── README.md
 ```
-
----
-
-## 👥 Team / Author
-
-**Project:** NeuroMove  
-**Category:** Healthcare AI, Rehabilitation Technology, Neuromorphic Computing  
-**Built for:** Hackathon Prototype Demonstration
-
-Author:
-
-```text
-Your Name / Team Name
-```
-
----
-
-## 📄 License
-
-This project is intended for educational and hackathon demonstration purposes.
-
-You may add an open-source license such as MIT by creating a `LICENSE` file.
 
 ---
 
